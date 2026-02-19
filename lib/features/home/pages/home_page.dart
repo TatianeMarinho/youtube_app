@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:youtube_app/features/home/pages/tabs/library_page.dart';
+import 'package:youtube_app/features/home/pages/tabs/registrations_page.dart';
+import 'package:youtube_app/features/home/pages/tabs/start_page.dart';
+import 'package:youtube_app/features/home/pages/tabs/trending_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +13,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
+
+  final List<Widget> _pages = const [
+    StartPage(),
+    TrendingPage(),
+    RegistrationsPage(),
+    LibraryPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +47,9 @@ class _HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Container(),
+
+      body: _pages[_currentIndex], // troca a pagina
+      //bottomNavigation
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
