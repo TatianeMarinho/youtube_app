@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import '../screens/home_screen.dart' show HomeScreen;
+import 'package:youtube_app/features/home/pages/home_page.dart';
 
 class AppRoutes {
   static final router = GoRouter(
@@ -8,7 +8,7 @@ class AppRoutes {
       GoRoute(
         path: '/',
         name: 'home',
-        builder: (context, state) => const HomeScreen(),
+        builder: (context, state) => const HomePage(),
       ),
     ],
   );
