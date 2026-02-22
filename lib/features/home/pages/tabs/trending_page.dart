@@ -51,18 +51,25 @@ class _TrendingPageState extends State<TrendingPage> {
             );
           }
 
-          return ListView.builder(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
-            itemCount: videos.length,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: const EdgeInsets.only(bottom: 20),
-                child: SizedBox(
-                  height: 280,
-                  child: VideoCard(video: videos[index]),
-                ),
-              );
+          return RefreshIndicator(
+            onRefresh: () async {
+              setState(() {
+                _trendingFuture = _service.getTrendingVideos();
+              });
             },
+            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+              itemCount: videos.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  child: SizedBox(
+                    height: 280,
+                    child: VideoCard(video: videos[index]),
+                  ),
+                );
+              },
+            ),
           );
         },
       ),
