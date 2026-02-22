@@ -12,7 +12,9 @@ class YoutubeService {
       "${ApiConfig.baseUrl}/search"
       "?part=snippet"
       "&type=video"
-      "&maxResults=20"
+      "&maxResults=30"
+      "&regionCode=BR"
+      "&relevanceLanguage=pt"
       "&key=${ApiConfig.youtubeApiKey}"
       "&q=$query", //palavra buscada
     );

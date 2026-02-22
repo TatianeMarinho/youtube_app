@@ -5,7 +5,7 @@ import 'package:youtube_app/features/home/widgets/video_card.dart';
 
 class StartPage extends StatefulWidget {
   final String search; // recebe o termo de busca
-  const StartPage({super.key, this.search = " "}); //padrao é nada escrito
+  const StartPage({super.key, this.search = "humor"}); //padrao é nada escrito
 
   @override
   State<StartPage> createState() => _StartPageState();
