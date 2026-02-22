@@ -1,34 +1,63 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart'; // Import necessário para o debugPrint
 import 'package:http/http.dart' as http;
 import 'package:youtube_app/core/config/api_config.dart';
 import 'package:youtube_app/features/home/models/video_model.dart';
 
-//ponte entre o app e a api
+// ponte entre o app e a api
 class YoutubeService {
+  //metodo de busca
   Future<List<VideoModel>> searchVideos(String query) async {
-    //retorna uma lista de objetos
-    final url = Uri.parse(
-      //construçao da url que sera passada para a requisiçao
-      "${ApiConfig.baseUrl}/search"
-      "?part=snippet"
-      "&type=video"
-      "&maxResults=30"
-      "&regionCode=BR"
-      "&relevanceLanguage=pt"
-      "&key=${ApiConfig.youtubeApiKey}"
-      "&q=$query", //palavra buscada
-    );
+    try {
+      final url = Uri.parse(
+        "${ApiConfig.baseUrl}/search"
+        "?part=snippet"
+        "&type=video"
+        "&maxResults=30"
+        "&regionCode=BR"
+        "&relevanceLanguage=pt"
+        "&key=${ApiConfig.youtubeApiKey}"
+        "&q=$query",
+      );
 
-    final response = await http.get(url); //requisiçao a api
+      final response = await http.get(url);
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body); //transforma json em map
-      final List items = data['items']; //pega so a lista de videos
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+        final List items = data['items'];
+        return items.map((video) => VideoModel.fromJson(video)).toList();
+      }
+      return [];
+    } catch (e) {
+      debugPrint("Erro na busca: $e");
+      return [];
+    }
+  }
 
-      //retorna a lista final de objetos
-      return items.map((video) => VideoModel.fromJson(video)).toList();
-    } else {
-      throw Exception("Erro ao buscar videos");
+  // metodo de trending
+  Future<List<VideoModel>> getTrendingVideos() async {
+    try {
+      final url = Uri.parse(
+        "${ApiConfig.baseUrl}/videos"
+        "?part=snippet"
+        "&chart=mostPopular"
+        "&regionCode=BR"
+        "&maxResults=30"
+        "&key=${ApiConfig.youtubeApiKey}",
+      );
+
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        final data = jsonDecode(response.body);
+
+        final List items = data['items'];
+        return items.map((video) => VideoModel.fromJson(video)).toList();
+      }
+      return [];
+    } catch (e) {
+      debugPrint("Erro no trending: $e");
+      return [];
     }
   }
 }
