@@ -34,7 +34,7 @@ class MyStreamApp extends StatelessWidget {
         //bottomNavigatorTheme
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.burnRed,
-          selectedItemColor: AppColors.fireRed,
+          selectedItemColor: AppColors.electricGreen,
           unselectedItemColor: AppColors.softLime,
           type: BottomNavigationBarType.fixed,
           elevation: 8,

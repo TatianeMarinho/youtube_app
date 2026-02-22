@@ -3,6 +3,7 @@ import 'package:youtube_app/features/home/pages/tabs/library_page.dart';
 import 'package:youtube_app/features/home/pages/tabs/registrations_page.dart';
 import 'package:youtube_app/features/home/pages/tabs/start_page.dart';
 import 'package:youtube_app/features/home/pages/tabs/trending_page.dart';
+import 'package:youtube_app/features/home/widgets/custom_search_delegate.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,16 +14,17 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-
-  final List<Widget> _pages = const [
-    StartPage(),
-    TrendingPage(),
-    RegistrationsPage(),
-    LibraryPage(),
-  ];
+  String _searchedTerm = ' '; // variavel de controle
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> _pages = [
+      StartPage(search: _searchedTerm), //passa o termo pesquisado
+      TrendingPage(),
+      RegistrationsPage(),
+      LibraryPage(),
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset('assets/images/youtube.png', width: 98, height: 22),
@@ -34,8 +36,20 @@ class _HomePageState extends State<HomePage> {
             icon: Icon(Icons.videocam),
           ),
           IconButton(
-            onPressed: () {
-              print('acao: pesquisa');
+            onPressed: () async {
+              // abre a tela de busca e aguarda o resultado
+              String? res = await showSearch(
+                context: context,
+                delegate: CustomSearchDelegate(),
+              );
+              //se digitou algo, atualiza o estado
+              if (res != null && res.isNotEmpty) {
+                setState(() {
+                  _searchedTerm = res;
+                  _currentIndex =
+                      0; //volta para a aba Inicio caso a pesquisa tenha sido feita em outra aba
+                });
+              }
             },
             icon: Icon(Icons.search),
           ),

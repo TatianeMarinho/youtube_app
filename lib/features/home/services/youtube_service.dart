@@ -11,10 +11,10 @@ class YoutubeService {
       //construçao da url que sera passada para a requisiçao
       "${ApiConfig.baseUrl}/search"
       "?part=snippet"
-      "&q=$query" //palavra buscada
       "&type=video"
       "&maxResults=20"
-      "&key=${ApiConfig.youtubeApiKey}",
+      "&key=${ApiConfig.youtubeApiKey}"
+      "&q=$query", //palavra buscada
     );
 
     final response = await http.get(url); //requisiçao a api
