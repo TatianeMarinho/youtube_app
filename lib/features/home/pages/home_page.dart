@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _currentIndex = 0;
-  String _searchedTerm = ' '; // variavel de controle
+  String _searchedTerm = 'atualidades'; // variavel de controle
 
   @override
   Widget build(BuildContext context) {
