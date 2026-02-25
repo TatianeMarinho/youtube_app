@@ -55,3 +55,12 @@ O app utiliza um tema escuro personalizado com a seguinte paleta de cores:
    ```bash
    flutter pub get
    flutter run
+
+### 🔑 Configuração da API
+
+Para rodar este projeto, você precisará de uma API Key do Google Cloud:
+
+1. Obtenha uma chave em [Google Cloud Console](https://console.cloud.google.com/).
+2. Ative a **YouTube Data API v3**.
+3. Na raiz do projeto, duplique o arquivo `.env.example` e renomeie para `.env`.
+4. Cole sua chave na variável `YOUTUBE_API_KEY`.
