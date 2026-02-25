@@ -63,12 +63,12 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.only(
-                        bottom: 20,
+                        bottom: 24,
                         left: 15,
                         right: 15,
                       ),
                       child: SizedBox(
-                        height: 280,
+                        height: 300,
                         child: VideoCard(video: videos[index]),
                       ),
                     );
@@ -94,7 +94,7 @@ class _RegistrationsPageState extends State<RegistrationsPage> {
                 radius: 28,
                 backgroundColor: Colors.white10,
                 backgroundImage: NetworkImage(
-                  "https://picsum.photos/100/100?random",
+                  "https://media.istockphoto.com/id/157373207/pt/foto/pedras-seixo-de-equil%C3%ADbrio-numa-praia-durante-o-p%C3%B4r-do-sol.jpg?s=612x612&w=0&k=20&c=Dr0EC4zTDog__QLGwDyadphWXZCDyzx_FXAeis1iKkM=",
                 ),
               ),
               // Ponto azul indicando vídeo novo (detalhe de UX do YouTube)

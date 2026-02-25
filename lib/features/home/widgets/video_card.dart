@@ -27,6 +27,7 @@ class VideoCard extends StatelessWidget {
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
           children: [
             //imagem
             AspectRatio(
@@ -51,6 +52,7 @@ class VideoCard extends StatelessWidget {
 
             //Titulo
             Expanded(
+              flex: 1,
               // faz o texto ocupar o que sobra sem empurrar
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(10, 8, 10, 0),

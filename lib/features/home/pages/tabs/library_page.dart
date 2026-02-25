@@ -14,7 +14,7 @@ class LibraryPage extends StatelessWidget {
             //SEÇÃO HISTÓRICO
             _buildSectionHeader(Icons.history, "Histórico", "Ver tudo"),
             SizedBox(
-              height: 150, // para que o listviewsaiba o tamanho
+              height: 170, // para que o listviewsaiba o tamanho
               child: ListView.builder(
                 scrollDirection:
                     Axis.horizontal, //faz o scrooll ser para os lados
@@ -120,7 +120,7 @@ class LibraryPage extends StatelessWidget {
   // Widget que simula um vídeo no histórico (Miniatura + Título)
   Widget _buildRecentVideoItem() {
     return Container(
-      width: 160,
+      width: 170,
       margin: const EdgeInsets.only(right: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -133,7 +133,7 @@ class LibraryPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
                 image: const DecorationImage(
                   image: NetworkImage(
-                    "https://picsum.photos/200/110",
+                    "https://media.istockphoto.com/id/157373207/pt/foto/pedras-seixo-de-equil%C3%ADbrio-numa-praia-durante-o-p%C3%B4r-do-sol.jpg?s=612x612&w=0&k=20&c=Dr0EC4zTDog__QLGwDyadphWXZCDyzx_FXAeis1iKkM=",
                   ), // Imagem aleatória
                   fit: BoxFit.cover,
                 ),

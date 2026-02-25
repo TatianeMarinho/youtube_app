@@ -60,7 +60,7 @@ class _StartPageState extends State<StartPage> {
                 maxCrossAxisExtent: 200, //largura maxima do card
                 crossAxisSpacing: 12,
                 mainAxisSpacing: 12,
-                childAspectRatio: 1.05, //altura fixa real do card
+                childAspectRatio: 0.90, //altura fixa real do card
               ),
               itemBuilder: (context, index) {
                 return VideoCard(video: videos[index]);

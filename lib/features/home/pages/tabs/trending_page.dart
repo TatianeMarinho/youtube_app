@@ -64,7 +64,7 @@ class _TrendingPageState extends State<TrendingPage> {
                 return Container(
                   margin: const EdgeInsets.only(bottom: 20),
                   child: SizedBox(
-                    height: 280,
+                    height: 270,
                     child: VideoCard(video: videos[index]),
                   ),
                 );

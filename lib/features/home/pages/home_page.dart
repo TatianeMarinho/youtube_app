@@ -69,6 +69,10 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
+
+            if (index == 0) {
+              _searchedTerm = 'atualidades';
+            }
           });
         },
         items: const [
